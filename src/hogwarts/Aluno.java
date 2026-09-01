@@ -9,7 +9,7 @@ public class Aluno {
     private int lealdade;
     private String casa;
 
-    Aluno(String nome, int idade, int coragem, int inteligencia, int ambicao, int lealdade, String casa) {
+    public Aluno(String nome, int idade, int coragem, int inteligencia, int ambicao, int lealdade, String casa) {
         this.nome = nome;
         this.idade = idade;
         this.coragem = coragem;
@@ -76,13 +76,35 @@ public class Aluno {
     }
 
     public void exibirInformacoes() {
-        System.out.println("Nome: " + this.nome);
-        System.out.println("Idade: " + this.idade);
-        System.out.println("Coragem: " + this.coragem);
-        System.out.println("Inteligencia: " + this.inteligencia);
-        System.out.println("Ambicao: " + this.ambicao);
-        System.out.println("Lealdade: " + this.lealdade);
-        System.out.println("Casa: " + this.casa);
+        System.out.println("Nome: " + this.nome
+                + "\nIdade: " + this.idade
+                + "\nCoragem: " + this.coragem
+                + "\nInteligência: " + this.inteligencia
+                + "\nAmbição: " + this.ambicao
+                + "\nLealdade: " + this.lealdade
+                + "\nCasa: " + this.casa);
     }
 
+    public void calcularCasa() {
+        int calculoGrifinoria = (2 * this.coragem) + this.lealdade;
+        int calculoSonserina = (2 * this.ambicao) + this.inteligencia;
+        int calculoCorvinal = (2 * this.inteligencia) + this.lealdade;
+        int calculoLufaLufa = ((2 * this.lealdade) + this.coragem) / 3;
+
+        if (calculoGrifinoria > calculoSonserina && calculoGrifinoria > calculoCorvinal
+                && calculoGrifinoria > calculoLufaLufa) {
+            setCasa("Grifinória");
+        } else if (calculoSonserina > calculoGrifinoria && calculoSonserina > calculoCorvinal
+                && calculoSonserina > calculoLufaLufa) {
+            setCasa("Sonserina");
+        } else if (calculoCorvinal > calculoGrifinoria && calculoCorvinal > calculoSonserina
+                && calculoCorvinal > calculoLufaLufa) {
+            setCasa("Corvinal");
+        } else if (calculoLufaLufa > calculoGrifinoria && calculoLufaLufa > calculoSonserina
+                && calculoLufaLufa > calculoCorvinal) {
+            setCasa("Lufa-Lufa");
+        } else {
+            setCasa("Sem casa definida");
+        }
+    }
 }
