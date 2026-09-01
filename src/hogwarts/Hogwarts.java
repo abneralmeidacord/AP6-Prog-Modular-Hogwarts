@@ -12,7 +12,7 @@ public class Hogwarts {
 
         System.out.println("Dê enter para começar o projeto: ");
         String controller = "";
-        
+
         while (!"sair".equals(controller)) {
             controller = input.nextLine();
             System.out.println("Digite o nome do aluno (ou 'sair' para encerrar): ");
@@ -36,7 +36,14 @@ public class Hogwarts {
             System.out.println("Digite a lealdade do aluno (0-100): ");
             int lealdade = input.nextInt();
 
-            Aluno aluno = new Aluno(nome, idade, coragem, inteligencia, ambicao, lealdade, "");
+            System.out.println("Digite a estratégia do aluno (0-100): ");
+            int estrategia = input.nextInt();
+
+            System.out.println("Digite a criatividade do aluno (0-100): ");
+            int criatividade = input.nextInt();
+
+            Aluno aluno = new Aluno(nome, idade, coragem, inteligencia, ambicao, lealdade, estrategia, criatividade,
+                    "Indefinida");
             aluno.calcularCasa();
             aluno.exibirInformacoes();
         }

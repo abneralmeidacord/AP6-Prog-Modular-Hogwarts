@@ -7,15 +7,20 @@ public class Aluno {
     private int inteligencia;
     private int ambicao;
     private int lealdade;
+    private int estrategia;
+    private int criatividade;
     private String casa;
 
-    public Aluno(String nome, int idade, int coragem, int inteligencia, int ambicao, int lealdade, String casa) {
+    public Aluno(String nome, int idade, int coragem, int inteligencia, int ambicao, int lealdade, int estrategia,
+            int criatividade, String casa) {
         this.nome = nome;
         this.idade = idade;
         this.coragem = coragem;
         this.inteligencia = inteligencia;
         this.ambicao = ambicao;
         this.lealdade = lealdade;
+        this.estrategia = estrategia;
+        this.criatividade = criatividade;
         this.casa = casa;
     }
 
@@ -67,6 +72,22 @@ public class Aluno {
         this.lealdade = lealdade;
     }
 
+    public int getEstrategia() {
+        return estrategia;
+    }
+
+    public void setEstrategia(int estrategia) {
+        this.estrategia = estrategia;
+    }
+
+    public int getCriatividade() {
+        return criatividade;
+    }
+
+    public void setCriatividade(int criatividade) {
+        this.criatividade = criatividade;
+    }
+
     public String getCasa() {
         return casa;
     }
@@ -82,13 +103,15 @@ public class Aluno {
                 + "\nInteligência: " + this.inteligencia
                 + "\nAmbição: " + this.ambicao
                 + "\nLealdade: " + this.lealdade
+                + "\nEstratégia: " + this.estrategia
+                + "\nCriatividade: " + this.criatividade
                 + "\nCasa: " + this.casa);
     }
 
     public void calcularCasa() {
         int calculoGrifinoria = (2 * this.coragem) + this.lealdade;
-        int calculoSonserina = (2 * this.ambicao) + this.inteligencia;
-        int calculoCorvinal = (2 * this.inteligencia) + this.lealdade;
+        int calculoSonserina = (2 * this.ambicao) + this.estrategia;
+        int calculoCorvinal = (2 * this.inteligencia) + this.criatividade;
         int calculoLufaLufa = ((2 * this.lealdade) + this.coragem) / 3;
 
         if (calculoGrifinoria > calculoSonserina && calculoGrifinoria > calculoCorvinal
