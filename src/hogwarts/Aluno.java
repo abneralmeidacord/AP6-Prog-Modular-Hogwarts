@@ -1,5 +1,7 @@
 package hogwarts;
 
+import java.time.LocalDate;
+
 public class Aluno {
     private String nome;
     private int idade;
@@ -10,6 +12,8 @@ public class Aluno {
     private int estrategia;
     private int criatividade;
     private String casa;
+    private LocalDate dataNascimento;
+    private String cod_matricula;
 
     public Aluno(String nome, int idade, int coragem, int inteligencia, int ambicao, int lealdade, int estrategia,
             int criatividade, String casa) {
@@ -25,11 +29,11 @@ public class Aluno {
     }
 
     public String getNome() {
-        return nome;
+        return nome.toLowerCase();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toLowerCase();
     }
 
     public int getIdade() {
@@ -89,30 +93,46 @@ public class Aluno {
     }
 
     public String getCasa() {
-        return casa;
+        return casa.toLowerCase();
     }
 
     public void setCasa(String casa) {
-        this.casa = casa;
+        this.casa = casa.toLowerCase();
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setCodMatricula(String cod_matricula) {
+        this.cod_matricula = cod_matricula;
+    }
+
+    public String getCodMatricula() {
+        return cod_matricula;
     }
 
     public void exibirInformacoes() {
-        System.out.println("Nome: " + this.nome
-                + "\nIdade: " + this.idade
-                + "\nCoragem: " + this.coragem
-                + "\nInteligência: " + this.inteligencia
-                + "\nAmbição: " + this.ambicao
-                + "\nLealdade: " + this.lealdade
-                + "\nEstratégia: " + this.estrategia
-                + "\nCriatividade: " + this.criatividade
-                + "\nCasa: " + this.casa);
+        System.out.println("Nome: " + getNome()
+                + "\nIdade: " + getIdade()
+                + "\nCoragem: " + getCoragem()
+                + "\nInteligência: " + getInteligencia()
+                + "\nAmbição: " + getAmbicao()
+                + "\nLealdade: " + getLealdade()
+                + "\nEstratégia: " + getEstrategia()
+                + "\nCriatividade: " + getCriatividade()
+                + "\nCasa: " + getCasa());
     }
 
     public void calcularCasa() {
-        int calculoGrifinoria = (2 * this.coragem) + this.lealdade;
-        int calculoSonserina = (2 * this.ambicao) + this.estrategia;
-        int calculoCorvinal = (2 * this.inteligencia) + this.criatividade;
-        int calculoLufaLufa = ((2 * this.lealdade) + this.coragem) / 3;
+        int calculoGrifinoria = (2 * getCoragem()) + getLealdade();
+        int calculoSonserina = (2 * getAmbicao()) + getEstrategia();
+        int calculoCorvinal = (2 * getInteligencia()) + getCriatividade();
+        int calculoLufaLufa = ((2 * getLealdade()) + getCoragem()) / 3;
 
         if (calculoGrifinoria > calculoSonserina && calculoGrifinoria > calculoCorvinal
                 && calculoGrifinoria > calculoLufaLufa) {
@@ -128,6 +148,19 @@ public class Aluno {
             setCasa("Lufa-Lufa");
         } else {
             setCasa("Sem casa definida");
+        }
+    }
+
+    public void calcularIdade() {
+        if (getDataNascimento() != null) {
+            LocalDate hoje = LocalDate.now();
+            int idadeCalculada = hoje.getYear() - getDataNascimento().getYear();
+            if (hoje.getDayOfYear() < getDataNascimento().getDayOfYear()) {
+                idadeCalculada--;
+            }
+            setIdade(idadeCalculada);
+        } else {
+            System.out.println("Data de nascimento não definida.");
         }
     }
 }
